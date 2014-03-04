@@ -156,7 +156,7 @@ module.exports = function(grunt) {
     browserify: {
       vendor: {
         src: [
-          '<%= yeoman.vendor %>/jquery/jquery.js',
+          '<%= yeoman.vendor %>/jquery/dist/jquery.js',
           '<%= yeoman.vendor %>/lodash/dist/lodash.js',
           '<%= yeoman.vendor %>/backbone/backbone.js'
         ],
@@ -165,7 +165,7 @@ module.exports = function(grunt) {
           debug: true,
           shim: {
             jquery: {
-              path: '<%= yeoman.vendor %>/jquery/jquery.js',
+              path: '<%= yeoman.vendor %>/jquery/dist/jquery.js',
               exports: '$'
             },
             lodash: {
@@ -426,7 +426,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
+    'jshint',
     'test',
     'build'
   ]);
