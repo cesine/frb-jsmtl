@@ -31,10 +31,6 @@ module.exports = function(grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      less: {
-        files: ['<%= yeoman.app %>/less/{,*/}*.less'],
-        tasks: ['less:server', 'autoprefixer']
-      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -125,65 +121,17 @@ module.exports = function(grunt) {
         }
       }
     },
-    less: {
-      options: {
-        compile: true,
-        banner: '<%= banner %>'
-      },
-      dev: {
-        src: ['<%= yeoman.app %>/less/app.less'],
-        dest: '.tmp/styles/app.css'
-      },
-      bootstrap: {
-        src: ['<%= yeoman.vendor %>/bootstrap/less/bootstrap.less'],
-        dest: '<%= yeoman.dist %>/styles/bootstrap.css'
-      },
-      'bootstrap-min': {
-        options: {
-          compress: true
-        },
-        src: ['<%= yeoman.vendor %>/bootstrap/less/bootstrap.less'],
-        dest: '<%= yeoman.dist %>/styles/bootstrap.min.css'
-      },
-      min: {
-        options: {
-          compress: true
-        },
-        src: ['<%= yeoman.app %>/less/app.less'],
-        dest: '<%= yeoman.dist %>/styles/app.min.css'
-      }
-    },
     browserify: {
       vendor: {
         src: [
-          '<%= yeoman.vendor %>/jquery/dist/jquery.js',
-          '<%= yeoman.vendor %>/lodash/dist/lodash.js',
-          '<%= yeoman.vendor %>/backbone/backbone.js'
         ],
         dest: '.tmp/scripts/vendor.js',
         options: {
           debug: true,
           shim: {
-            jquery: {
-              path: '<%= yeoman.vendor %>/jquery/dist/jquery.js',
-              exports: '$'
-            },
-            lodash: {
-              path: '<%= yeoman.vendor %>/lodash/dist/lodash.js',
-              exports: '_'
-            },
-            backbone: {
-              path: '<%= yeoman.vendor %>/backbone/backbone.js',
-              exports: 'Backbone',
-              depends: {
-                jquery: '$',
-                lodash: '_'
-              }
-            }
+           
           },
           alias: [
-            '<%= yeoman.vendor %>/lodash/dist/lodash.js:underscore',
-            '<%= yeoman.vendor %>/backbone/backbone.js:backbone'
           ],
           transform: ['debowerify']
         }
@@ -193,7 +141,7 @@ module.exports = function(grunt) {
         dest: '.tmp/scripts/main.js',
         options: {
           debug: true,
-          external: ['jquery', 'lodash', 'backbone']
+          external: []
         }
       },
       test: {
@@ -201,7 +149,7 @@ module.exports = function(grunt) {
         dest: '.tmp/test/test.js',
         options: {
           debug: true,
-          external: ['jquery', 'lodash', 'backbone']
+          external: []
           // ignore: ['test/lib/*.js', 'test/spec/*.js']
         }
       }
@@ -344,8 +292,7 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'images/{,*/}*.webp',
-            'styles/fonts/{,*/}*.*'  ,
-            'bower_components/sass-bootstrap/fonts/*.*'
+            'styles/fonts/{,*/}*.*'
           ]
         }]
       },
@@ -360,7 +307,6 @@ module.exports = function(grunt) {
     
     concurrent: {
       server: [
-        'less:dev',
         'browserify:dev',
         'browserify:vendor',
         'copy:styles'
@@ -373,7 +319,6 @@ module.exports = function(grunt) {
         'browserify:test'
       ],
       dist: [
-        'less:dist',
         'browserify',
         'copy:styles',
         'imagemin',
