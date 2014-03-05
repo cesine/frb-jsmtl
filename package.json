@@ -34,10 +34,13 @@
     "node": ">=0.10.0"
   },
   "browserify": {
-    "transform": ["browserify-shim"]
+    "transform": [
+      "browserify-shim"
+    ]
   },
-  "browser": {
-  },
-  "browserify-shim": {
+  "browser": {},
+  "browserify-shim": {},
+  "dependencies": {
+    "frb": "^0.2.17"
   }
 }
