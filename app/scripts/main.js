@@ -6,9 +6,19 @@
  */
 
 'use strict';
+var Bindings = require("frb/bindings");
 
-var App = require('./app.js');
+var component = {
+	fruitView: document.whichFruit.chosenFruit
+};
 
-var app = new App();
+Bindings.defineBindings(component, {
+	"fruitView.value": {
+		"<->": "chosenFruit"
+	}
+});
 
-app.beep();
+document.whichFruit.chosenFruit.value = "apple"
+console.log(component.chosenFruit + " should be " + document.whichFruit.chosenFruit.value);
+
+window.component = component;

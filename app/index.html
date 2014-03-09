@@ -8,49 +8,18 @@
   <meta name="author" content="">
   <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-  <title>Theme Template for Bootstrap</title>
-
-  <!-- Bootstrap core CSS -->
-  <!-- <link href="../../dist/css/bootstrap.css" rel="stylesheet"> -->
-  <!-- Bootstrap theme -->
-  <!-- <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+  <title>FRB Model - View Binding Examples</title>
 
   <!-- Custom styles for this template -->
   <link href="/styles/app.css" rel="stylesheet">
 
-  <!-- Just for debugging purposes. Don't actually copy this line! -->
-  <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+</head>
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
-    </head>
-
-    <body>
-      <p>
-        input:
-        <input id="testinput"/>
-      </p>
-      <p>
-        contenteditable:
-        <span id="testcontenteditable" contenteditable>Hello, content html!</span>
-      </p>
-      <p>
-        span:
-        <span id="testspan"></span>
-      </p>
-
-      <p>
-        Orange:
-        <input id="orange" type="checkbox"/>
-      </p>
-
-      <p>
-        Apple:
-        <input id="apple" type="checkbox"/>
-      </p>
+<body>
+  <form name="whichFruit">
+    Orange: <input id="orange" value="orange" type="radio" name="chosenFruit"/>
+    Apple: <input id="apple" value="apple" type="radio" name="chosenFruit"/>
+  </form>
 
     <!--
     Scripts
