@@ -17,7 +17,6 @@ Example of binding enum models to views.
 
 
 ```javascript
-
 'use strict';
 var Bindings = require("frb/bindings");
 
@@ -34,4 +33,37 @@ Bindings.defineBindings(component, {
 document.whichFruit.chosenFruit.value = "apple"
 console.log(component.chosenFruit + " should be " + document.whichFruit.chosenFruit.value);
 
+```
+
+### String views
+
+Example of binding string models to views.
+
+
+```html
+	Input: <input id="inputArea"/>
+	Result: <span id="resultArea"></span>
+```
+
+
+```javascript
+'use strict';
+var Bindings = require("frb/bindings");
+
+var component = {
+	inputView: document.getElementById("inputArea"),
+	resultView: document.getElementById("resultText")
+};
+
+Bindings.defineBindings(component, {
+	"inputView.value": {
+		"<->": "resultText"
+	},
+	"resultView.innerHTML": {
+		"<-": "resultText"
+	}
+});
+
+document.getElementById("inputArea").value = "apple"
+console.log(component.resultText + " should be " + document.getElementById("inputArea").value;
 ```

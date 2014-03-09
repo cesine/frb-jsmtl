@@ -9,16 +9,20 @@
 var Bindings = require("frb/bindings");
 
 var component = {
-	fruitView: document.whichFruit.chosenFruit
+	inputView: document.getElementById("inputArea"),
+	resultView: document.getElementById("resultArea")
 };
 
 Bindings.defineBindings(component, {
-	"fruitView.value": {
-		"<->": "chosenFruit"
+	"inputView.value": {
+		"<->": "resultText"
+	},
+	"resultView.innerHTML": {
+		"<-": "resultText"
 	}
 });
 
-document.whichFruit.chosenFruit.value = "apple"
-console.log(component.chosenFruit + " should be " + document.whichFruit.chosenFruit.value);
+document.getElementById("inputArea").value = "apple"
+console.log(component.resultText + " should be " + document.getElementById("inputArea").value);
 
 window.component = component;
