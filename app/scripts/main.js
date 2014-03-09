@@ -10,11 +10,11 @@ var Bindings = require("frb/bindings");
 
 var component = {
 	inputView: document.getElementById("inputArea"),
-	resultView: document.getElementById("resultArea")
+	resultView: document.getElementById("resultText")
 };
 
 Bindings.defineBindings(component, {
-	"inputView.value": {
+	"inputView.innerHTML": {
 		"<->": "resultText"
 	},
 	"resultView.innerHTML": {
@@ -22,7 +22,7 @@ Bindings.defineBindings(component, {
 	}
 });
 
-document.getElementById("inputArea").value = "apple"
-console.log(component.resultText + " should be " + document.getElementById("inputArea").value);
+document.getElementById("inputArea").innerHTML = "apple";
+console.log(component.resultText + " should be " + document.getElementById("inputArea").innerHTML);
 
 window.component = component;

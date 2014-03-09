@@ -80,6 +80,39 @@ Bindings.defineBindings(component, {
 	}
 });
 
-document.getElementById("inputArea").value = "apple"
-console.log(component.resultText + " should be " + document.getElementById("inputArea").value;
+document.getElementById("inputArea").value = "apple";
+console.log(component.resultText + " should be " + document.getElementById("inputArea").value);
+```
+
+### Contenteditable views
+
+Example of binding string models to views.
+
+
+```html
+	Input: <span id="inputArea" contenteditable></span>
+  	Result: <span id="resultArea"></span>
+```
+
+
+```javascript
+'use strict';
+var Bindings = require("frb/bindings");
+
+var component = {
+	inputView: document.getElementById("inputArea"),
+	resultView: document.getElementById("resultText")
+};
+
+Bindings.defineBindings(component, {
+	"inputView.innerHTML": {
+		"<->": "resultText"
+	},
+	"resultView.innerHTML": {
+		"<-": "resultText"
+	}
+});
+
+document.getElementById("inputArea").innerHTML = "apple";
+console.log(component.resultText + " should be " + document.getElementById("inputArea").innerHTML);
 ```
