@@ -2,6 +2,22 @@ frb-jsmtl
 =========
 
 
+### How to download examples
+
+```bash
+$ git clone git@github.com:cesine/frb-jsmtl.git
+```
+
+Checkout frb branch
+
+
+### How to run
+
+```bash
+$ npm install
+$ grunt serve
+```
+
 
 ### Enumerated views
 
