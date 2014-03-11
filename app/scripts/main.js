@@ -6,23 +6,30 @@
  */
 
 'use strict';
+var ObservableDOM = require("frb/dom");
 var Bindings = require("frb/bindings");
 
 var component = {
 	inputView: document.getElementById("inputArea"),
-	resultView: document.getElementById("resultText")
+	resultView: document.getElementById("resultArea"),
+	resultText: "pear"
 };
 
 Bindings.defineBindings(component, {
-	"inputView.innerHTML": {
-		"<->": "resultText"
+	"inputView.value": {
+		"<-": "resultText"
+	}
+});
+
+Bindings.defineBindings(component, {
+	"resultText": {
+		"<->": "inputView.value"
 	},
 	"resultView.innerHTML": {
 		"<-": "resultText"
 	}
 });
-
-document.getElementById("inputArea").innerHTML = "apple";
-console.log(component.resultText + " should be " + document.getElementById("inputArea").innerHTML);
+document.getElementById("inputArea").innerText = "apple";
+console.log(component.resultText + " should be " + document.getElementById("inputArea").value);
 
 window.component = component;

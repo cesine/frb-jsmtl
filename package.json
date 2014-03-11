@@ -41,6 +41,6 @@
   "browser": {},
   "browserify-shim": {},
   "dependencies": {
-    "frb": "^0.2.17"
+    "frb": "git://github.com/cesine/frb.git#contenteditable"
   }
 }
